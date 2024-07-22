@@ -5,6 +5,8 @@ import {
   NavLink,
   Routes,
 } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 //comp
 import Nbar from "./components/Nbar";
@@ -29,7 +31,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="bins" element={<BinsMap />} />
           <Route path="account" element={<Account />} />
-          <Route path="admin/dashboard" Component={AdminDashboard} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path="admin/dashboard" Component={AdminDashboard} /> */}
 
           <Route path="about" element={<About />} />
         </Routes>

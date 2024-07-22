@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 
 const Account = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -19,7 +21,9 @@ const Account = () => {
     });
 
     if (response.ok) {
-      // Assuming the login was successful
+      const data = await response.json();
+      // Assuming the login was successful and you get user data in response
+      login(data.user); // Update the auth context
       navigate("/admin/dashboard");
     } else {
       // Handle login failure
