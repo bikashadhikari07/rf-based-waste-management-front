@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import heroImage from "../assest/herosec.png"; // Import the image
+
 function Home() {
   return (
     <div className="container-fluid hero-section d-flex align-items-center">
@@ -12,10 +13,13 @@ function Home() {
             sustainable future.
           </p>
           <div>
-            <a href="/get-started" className="btn btn-primary mr-2">
+            <a
+              href="/get-started"
+              className="btn btn-primary mr-md-4 mb-2 mb-md-0"
+            >
               Get Started
             </a>
-            <a href="/learn-more" className="btn btn-secondary">
+            <a href="/learn-more" className="btn btn-secondary ml-md-4">
               Learn More
             </a>
           </div>
@@ -31,4 +35,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;

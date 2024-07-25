@@ -23,7 +23,8 @@ const Account = () => {
     if (response.ok) {
       const data = await response.json();
       // Assuming the login was successful and you get user data in response
-      login(data.user); // Update the auth context
+
+      login(data.token); // Update the auth context
       navigate("/admin/dashboard");
     } else {
       // Handle login failure
