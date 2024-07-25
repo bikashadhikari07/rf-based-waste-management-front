@@ -1,4 +1,3 @@
-// src/context/AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
@@ -12,23 +11,20 @@ export function AuthProvider({ children }) {
     const token = Cookies.get("token");
     if (token) {
       setIsAuthenticated(true);
-      // Optionally, you can decode the token to get user info
-      setUser({ token });
-
-      // Assuming you store the token only
+      setUser({ token }); // Store the token only
     }
   }, []);
 
   const login = (token) => {
     setIsAuthenticated(true);
     setUser({ token });
-    Cookies.set("token", token, { expires: 7 });
+    Cookies.set("token", token, { expires: 7 }); // Store token in cookies for 7 days
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null);
-    localStorage.removeItem("token");
+    Cookies.remove("token"); // Remove token from cookies
   };
 
   return (
