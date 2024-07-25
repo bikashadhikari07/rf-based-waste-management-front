@@ -1,29 +1,57 @@
-/* Home.css */
-
+/* Hero Section */
 .hero-section {
-  background-color: #f8f9fa;
-  padding: 60px 0;
+  background-color: rgb(96, 134, 121);
+  height: 100vh; /* Full height */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align items on the left and right */
+  padding: 0 2rem; /* Add some padding to the sides */
 }
 
-.hero-image {
-  max-width: 80%;
+.hero-section .text-content {
+  flex: 1; /* Allow text content to take up available space */
+  text-align: center; /* Center text content */
 }
 
-.my-5 {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+.hero-section .text-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+.hero-section .text-content p {
+  font-size: 1.25rem;
 }
 
-h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+.hero-section .button-group {
+  display: flex; /* Ensure buttons are aligned in a row */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 1rem; /* Add some space above buttons */
 }
 
-p {
-  font-size: 1.1rem;
+.hero-section .image-container {
+  flex: 1; /* Allow image container to take up available space */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+}
+
+.hero-section .image-container img {
+  max-width: 100%; /* Make sure the image scales properly */
+  height: auto;
+}
+
+/* Ensure buttons have uniform size */
+.btn-lg {
+  font-size: 1.25rem; /* Ensure consistent font size */
+  padding: 0.75rem 1.5rem; /* Ensure consistent padding */
+}
+
+/* Additional utility to avoid different button sizes */
+.button-group .btn {
+  flex: 1; /* Ensure buttons take equal space if needed */
+}
+
+.threephase {
+  background-color: rgb(96, 134, 121);
+  color: white;
 }
