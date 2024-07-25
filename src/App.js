@@ -17,6 +17,7 @@ import BinsMap from "./components/binsmap/BinsMap";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import AdminDashboard from "./components/hidden/Admin_Dash";
+import ContactUs from "./components/ContactUs";
 
 //css
 import "./App.css";
@@ -25,26 +26,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <>
-      <>
+      <div className="app">
         <Nbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="bins" element={<BinsMap />} />
-          <Route path="account" element={<Account />} />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          {/* <Route path="admin/dashboard" Component={AdminDashboard} /> */}
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="bins" element={<BinsMap />} />
+            <Route path="account" element={<Account />} />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route path="admin/dashboard" Component={AdminDashboard} /> */}
 
-          <Route path="about" element={<About />} />
-        </Routes>
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<ContactUs />} />
+          </Routes>
+        </div>
         <Footer />
-      </>
+      </div>
     </>
   );
 }

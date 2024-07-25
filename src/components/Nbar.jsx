@@ -6,7 +6,7 @@ function Nbar() {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">
-          Navbar
+          Wastee
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -19,6 +19,9 @@ function Nbar() {
             </Nav.Link>
             <Nav.Link as={Link} to="/account">
               Account
+            </Nav.Link>
+            <Nav.Link as={Link} to="/contact">
+              Contact
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

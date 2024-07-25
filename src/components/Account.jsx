@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import "./Login.css"; // Ensure you import the CSS file
 
 const Account = () => {
   const [username, setUsername] = useState("");
@@ -33,9 +34,9 @@ const Account = () => {
   };
 
   return (
-    <Container>
+    <Container className="login-container">
       <Row className="justify-content-md-center">
-        <Col md={4}>
+        <Col md={4} className="login-form">
           <h2>Admin Login</h2>
           <Form onSubmit={handleLogin}>
             <Form.Group controlId="formBasicUsername">
@@ -58,7 +59,7 @@ const Account = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="login-button">
               Login
             </Button>
           </Form>

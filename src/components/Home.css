@@ -1,29 +1,29 @@
+/* Home.css */
+
 .hero-section {
-  background-color: #f8f9fa; /* Light grey background for contrast */
-  height: calc(
-    100vh - 56px
-  ); /* Full height of the viewport minus the navbar height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 60px 0;
 }
 
-.hero-section h1 {
+.hero-image {
+  max-width: 80%;
+}
+
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+h2 {
   font-size: 2.5rem;
-  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
-.hero-section p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
 }
 
-.hero-section .btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-}
-
-.hero-section .hero-image {
-  max-width: 100%;
-  height: auto;
+p {
+  font-size: 1.1rem;
 }

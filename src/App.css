@@ -1,8 +1,25 @@
-.App {
-  text-align: center;
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
 }

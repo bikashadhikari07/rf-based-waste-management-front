@@ -217,10 +217,7 @@ const AdminDashboard = () => {
       <Row className="mb-4">
         <Col>
           <Card>
-            <Card.Body>
-              <Card.Title>Bins Map</Card.Title>
-              <BinsMap bins={bins} onEditBin={handleEditBin} />
-            </Card.Body>
+            <BinsMap bins={bins} onEditBin={handleEditBin} />
           </Card>
         </Col>
       </Row>
