@@ -10,6 +10,7 @@ import BinModal from "./components/BinModal";
 import GarbageCollectorStats from "./components/GarbageCollectorStats";
 import BinsMap from "../binsmap/BinsMap";
 import "./AdminDashboard.css";
+import Complaintsstatus from "./components/Complaints";
 
 const AdminDashboard = () => {
   const [activeBins, setActiveBins] = useState(0);
@@ -21,6 +22,10 @@ const AdminDashboard = () => {
   const [bins, setBins] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedBin, setSelectedBin] = useState(null);
+
+  const [totalComplaints, settotalComplaints] = useState(0);
+  const [todaysComplaints, settodaysComplaints] = useState(0);
+
   const [formData, setFormData] = useState({
     latitude: "",
     longitude: "",
@@ -35,6 +40,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchBins();
     fetchGarbageCollectors();
+    fetchComplaints();
   }, []);
 
   const fetchBins = async () => {
@@ -72,6 +78,27 @@ const AdminDashboard = () => {
       setOnFieldGcollector(data.filter((gc) => gc.active).length); // Count where active is true
     } catch (error) {
       console.error("Error fetching garbage collectors:", error);
+    }
+  };
+
+  const fetchComplaints = async () => {
+    try {
+      const response = await axios.get("http://localhost:3002/complaints/all", {
+        headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+      });
+
+      const data = await response.json();
+      settotalComplaints(data.length);
+
+      settodaysComplaints(
+        data.filter(
+          (complaints) =>
+            new Date(complaints.lastEmptied).toDateString() ===
+            new Date().toDateString()
+        ).length
+      );
+    } catch (error) {
+      console.log("Error fetching complaints", error);
     }
   };
 
@@ -134,6 +161,10 @@ const AdminDashboard = () => {
         onFieldGcollector={onFieldGcollector}
         totalGcollector={totalGcollector}
       />
+      <Complaintsstatus>
+        totalComplaints={totalComplaints}
+        todaysComplaints={todaysComplaints}
+      </Complaintsstatus>
       <BinStats
         activeBins={activeBins}
         binsFilledToday={binsFilledToday}

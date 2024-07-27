@@ -26,6 +26,7 @@ const customIcon2 = new L.Icon({
 function BinsMap() {
   const [bins, setBins] = useState([]);
   const [collectors, setCollectors] = useState([]);
+  const [Complaints, setComplaints] = useState([]);
 
   useEffect(() => {
     // Fetch bin data from the server
@@ -57,9 +58,22 @@ function BinsMap() {
         console.error("Error fetching collectors:", error);
       }
     };
+    const fetchComplaints = async () => {
+      try {
+        const response = await fetch("http://localhost:3002/complaints/all");
+        if (!response.ok) {
+          throw new Error("failed to fetch complaints");
+        }
+        const data = await response.json();
+        setComplaints(data);
+      } catch (error) {
+        console.log("Error fetching complaints", error);
+      }
+    };
 
     fetchBins();
     fetchCollectors();
+    fetchComplaints();
   }, []);
 
   return (
@@ -102,6 +116,23 @@ function BinsMap() {
                 <Popup>
                   Vehicle Number: {collector.vehicleNumber} <br />
                   State: {collector.active ? "active" : "inactive"}
+                </Popup>
+              </Marker>
+            ))}
+
+            {/* Display complaints */}
+            {Complaints.map((Complaints, idx) => (
+              <Marker
+                key={`Complaints-${idx}`}
+                position={[
+                  Complaints.coordinates[1],
+                  Complaints.coordinates[0],
+                ]} // Latitude, Longitude
+                icon={customIcon2} // Use the same custom icon
+              >
+                {/* <Popup>demo complain</Popup> */}
+                <Popup>
+                  date: {Complaints.date} <br />
                 </Popup>
               </Marker>
             ))}
